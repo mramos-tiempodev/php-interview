@@ -7,7 +7,7 @@ Examen Entrevista PHP
  - 3.- Agregar funcionalidad para agregar, editar y eliminar animales
  - 4.- Darle estilo utilizando CSS
  - 5.- Crear pruebas unitarias
- - 5.- Crear Pull Request con el código
+ - 6.- Crear Pull Request con el código
 
 Notas: 
 - Todas las acciones tienen que ser ajax
