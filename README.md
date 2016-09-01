@@ -6,6 +6,7 @@ Examen Entrevista PHP
  - 2.- Crear un listado de animales y páginarlo cada 5 registros
  - 3.- Agregar boton para agregar, editar y eliminar animales
  - 4.- Darle estilo utilizando CSS
+ - 5.- Crear Pull Request con el código
 
 Notas: 
 - Todas las acciones tienen que ser ajax
