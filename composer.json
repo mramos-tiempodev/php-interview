@@ -1,0 +1,32 @@
+{
+    "name": "web challenge",
+    "description": "A challenge from tiempo",
+    "license": "MIT",
+    "keywords": ["challenge", "web challenge", "todo list"],
+    "homepage": "http://tiempo.webchallenge.com",
+    "authors": [
+        {
+            "name": "Martin Ramos",
+            "email": "martinn21@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "zendframework/zendframework": "~2.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Animal\\": "module/Animal/src/",
+            "ApiAnimal\\": "module/ApiAnimal/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "UnitTest\\Animal\\": "module/Animal/test/"
+        }
+    }	
+}
+
