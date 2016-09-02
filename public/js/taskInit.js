@@ -1,4 +1,7 @@
 $(document).ready(function () {
-    dataTableTask.init();
-    tasks.init();
+    var dataTableAnimal = new DataTabAnimaAnimaltaskRows);
+  Animalr taskManageAnimalnew TaskManagerAnimalaTableTask);
+
+    // IniAnimalize
+    taskManager.init();
 });

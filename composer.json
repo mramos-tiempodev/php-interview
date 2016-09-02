@@ -1,9 +1,9 @@
 {
     "name": "web challenge",
-    "description": "A challenge from wizeline",
+    "description": "A challenge from tiempo",
     "license": "MIT",
     "keywords": ["challenge", "web challenge", "todo list"],
-    "homepage": "http://wizeline.webchallenge.com",
+    "homepage": "http://tiempo.webchallenge.com",
     "authors": [
         {
             "name": "Martin Ramos",
@@ -19,13 +19,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Task\\": "module/Task/src/",
-            "ApiTask\\": "module/ApiTask/src/"
+            "Animal\\": "module/Animal/src/",
+            "ApiAnimal\\": "module/ApiAnimal/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "UnitTest\\Task\\": "module/Task/test/"
+            "UnitTest\\Animal\\": "module/Animal/test/"
         }
     }	
 }

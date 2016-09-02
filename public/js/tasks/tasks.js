@@ -1,89 +1,88 @@
-tasks = {
-    settings: {
-        $sendButton: $("#send-task"),
-        $taskForm: $("#taskForm"),
-        ajax: {
-            type: "POST",
-            url: "",
-            data: {},
-            dataType: "json",
-            async: true,
-            contentType: "application/json; charset=utf-8",
-            success: {},
-            error: {}
+var AnimalManager = function(dataTableAnimal){
+    var self = this;
+    var URL_INSERT_Animal = 'http://tiempo.webchallange.com/Animal/Animalclient/insert';
+    var URL_UPDATE_Animal = 'http://tiempo.webchallange.com/Animal/Animalclient/update';
+    var URL_DELETE_Animal = 'http://tiempo.webchallange.com/Animal/Animalclient/delete';
+    self.init = function() {
+        bindUIActions();
+        dataTableAnimal.init();
+    };
+
+    function getSettings() {
+        return {
+            //$saveButton: $("#send-Animal"),
+            $saveButton: $("#send"),
+            $updateButton: $("#send-Animal"),
+            $AnimalForm: $("#AnimalForm"),
+            //$updateButton: $(".edit"),
+            $deleteButton: $(".delete"),
+            ajax: {
+                type: "",
+                url: "",
+                data: {},
+                dataType: "json",
+                async: true,
+                contentType: "application/json; charset=utf-8",
+                success: {},
+                error: ajaxError
+            }
         }
-    },
-
-    init: function() {
-        s = this.settings;
-        this.bindUIActions();
-    },
-
-    bindUIActions: function() {
-        s.$sendButton.on("click", function(e) {
-            e.preventDefault();
-            tasks.save();
-        });
-    },
-
-    save: function() {
-        s.ajax.data = s.$taskForm.serialize();
-        s.ajax.url = 'http://wizeline.webchallange.com/task/taskclient/insert';
-        s.ajax.success = function(data)
-        {
-            //$('#example').DataTable({
-            //    "data": data.data,
-            //    "columns": [
-            //        { "title": "Name" },
-            //        { "title": "Status" },
-            //        { "title": "Action" }
-            //    ]
-            //});
-        };
-        s.ajax.error = function()
-        {
-            console.log('Something goes wrong');
-        };
-        $.ajax(s.ajax);
-    },
-
-    //save2: function() {
-    //    var example_table = $('#example').DataTable({
-    //        'ajax': {
-    //            "type"   : "POST",
-    //            "url"    : "http://wizeline.webchallange.com/task/taskclient/insert",
-    //            "data"   : s.$taskForm.serialize(),
-    //            "dataSrc": ""
-    //        },
-    //        "columns": [
-    //            { "title": "Name" },
-    //            { "title": "Status" },
-    //            { "title": "Action" }
-    //        ]
-    //    });
-    //    example_table.ajax.reload();
-    //},
-
-    update: function() {
-        s.ajax.data = s.$taskForm.serialize();
-        s.ajax.url = 'http://wizeline.webchallange.com/task/taskclient/update';
-        s.ajax.success = function(data)
-        {
-            //$('#example').DataTable({
-            //    "data": data.data,
-            //    "columns": [
-            //        { "title": "Name" },
-            //        { "title": "Status" },
-            //        { "title": "Action" }
-            //    ]
-            //});
-        };
-        s.ajax.error = function()
-        {
-            console.log('Something goes wrong');
-        };
-        $.ajax(s.ajax);
     }
 
+    function bindUIActions() {
+        var settings = getSettings();
+        console.log(settings.$updateButton);
+        settings.$saveButton.on("click", save);
+        settings.$updateButton.on("click", update);
+
+    }
+
+    function save() {
+        var settings = getSettings();
+        var ajaxSettings = settings.ajax;
+        var name = $("#name").val();
+        var status= $("#status").val();
+
+        ajaxSettings.type = "POST";
+        ajaxSettings.data = {name: name,status: status};
+        ajaxSettings.url = URL_INSERT_Animal;
+        ajaxSettings.success = dataTableAnimal.refreshData;
+
+        $.ajax(ajaxSettings);
+    }
+
+    function update() {
+        var settings = getSettings();
+        var ajaxSettings = settings.ajax;
+        var name = $("#name").val();
+        var status = $("#status").val();
+        var id = $("#id").val();
+
+        ajaxSettings.type = "POST";
+        ajaxSettings.data = {id:1,name: "dany", status:1};
+        ajaxSettings.url = URL_UPDATE_Animal;
+        ajaxSettings.success = dataTableAnimal.refreshData();
+
+        $.ajax(ajaxSettings);
+    }
+
+    function del() {
+        var settings = getSettings();
+        var ajaxSettings = settings.ajax;
+        var name = $("#name").val();
+        var status = $("#status").val();
+        var id = $("#id").val();
+
+        ajaxSettings.type = "PUT";
+        ajaxSettings.data = {id:id,name: name, status:status};
+        ajaxSettings.url = URL_DELETE_Animal;
+        ajaxSettings.success = dataTableAnimal.refreshData();
+
+        $.ajax(ajaxSettings);
+    }
+
+    function ajaxError() {
+        console.log('Something goes wrong');
+    }
 };
 

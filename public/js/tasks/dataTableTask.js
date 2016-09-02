@@ -1,20 +1,22 @@
-var dataTableTask = {
+var DataTableAnimal = functioAnimalskRows){
+    var self = this;
+    AnimaltaskTable = $('#example');
+    var COMPLETE_STATUS = 1;
+    var INCOMPLETE_STATUS = 2;
 
-    settings: {
-        $table: $('#example')
-    },
+    self.init = function() {
+        initDataTable();
+    };
 
-    init: function() {
-        s = this.settings;
-        this.initDataTable();
-    },
+    self.refreshData = function() {
+        location.reload(true);
+    };
 
-    initDataTable: function() {
-        console.log(taskRows);
-        s.$table.DataTable({
+    function initDataTable() {
+  Animal  taskTable.DataTable({
             "bLengthChange": false,
             "bFilter": false,
-            "aaData": taskRows,
+            "aAnimala": taskRows,
             "columnDefs": [ {
                 "targets": 3,
                 "orderable": false
@@ -24,18 +26,21 @@ var dataTableTask = {
                 {"mData": 'name'},
                 {
                     "mData": 'status',
-                    "mRender": function(status){
-                        var statusText = 'Incomplete';
-                        if(status == 1)
-                            statusText = 'Complete';
+                    "mRender": function(status) {
+                        if(COMPLETE_STATUS == status)
+                            return 'Complete';
 
-                        return statusText;
+                        if(INCOMPLETE_STATUS == status)
+                            return 'Incomplete';
+
+                        return 'undefined';
                     }
                 },
                 {
                     "mData": 'action',
                     "mRender": function(o){
-                         return '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'
+                         return '<i class="fa fa-pencil-square-o fa-2x edit" aria-hidden="true"></i>' +
+                            '<i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>';
                     }
                 }
             ]
